@@ -32,7 +32,33 @@ a { color: inherit; text-decoration: none; }
 .primary-nav > a:hover, .text-link:hover { color: var(--red); }
 .primary-nav .nav-contact { background: var(--ink); color: white; padding: 13px 17px; border-radius: 2px; }
 .nav-contact span { margin-left: 12px; color: #f0a493; }
+.primary-nav > a[aria-current="page"]:not(.nav-contact) { color: var(--red); }
 .menu-toggle { display: none; }
+
+.page-banner { position: relative; isolation: isolate; overflow: hidden; min-height: 320px; display: flex; align-items: center; background: var(--green); color: #fff; }
+.page-banner::before { position: absolute; z-index: -1; inset: 0 0 0 auto; width: min(45vw, 590px); background-position: center; background-repeat: no-repeat; background-size: cover; content: ""; opacity: .12; filter: grayscale(1); mask-image: linear-gradient(90deg, transparent, #000 38%, #000); }
+.page-banner-about::before { background-image: url("Emax/emax-2020/Mini%20Impact%20wrench.jpg"); }
+.page-banner-products::before { background-image: url("Emax/emax-2020/Surface%20tool%202%20(Minimal).jpg"); }
+.page-banner-contact::before { background-image: url("Emax/emax-2020/Rathet%20Wrench%20(Minimal).jpg"); }
+.page-banner-content { position: relative; z-index: 1; padding-block: 62px; }
+.page-banner .eyebrow { color: #c3d0c7; }
+.page-banner h1 { margin: 21px 0 13px; font: 500 clamp(43px, 5.5vw, 64px)/1.1 var(--serif); letter-spacing: -.06em; }
+.page-banner h1 span { color: #acbdb0; }
+.page-banner-content > p { max-width: 490px; margin-bottom: 0; color: #d0d9d2; font-size: 13px; line-height: 1.8; }
+.page-banner-index { position: absolute; right: max(32px, calc((100vw - 1160px) / 2)); bottom: 22px; color: #bdcbc1; font-size: 8px; letter-spacing: .16em; }
+.page-banner-contact .button { margin-top: 22px; }
+.home-pages { padding-block: 86px 96px; }
+.home-pages-heading { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin: 20px 0 30px; }
+.home-pages-heading h2 { max-width: 580px; margin: 0; font: 500 clamp(32px,4vw,45px)/1.17 var(--serif); letter-spacing: -.06em; }
+.home-pages-heading h2 span { color: #a0a69d; }
+.home-pages-heading p { max-width: 330px; margin: 0 0 3px; color: var(--muted); font-size: 11px; line-height: 1.8; }
+.home-pages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.home-page-card { min-height: 155px; padding: 20px; display: flex; flex-direction: column; background: #fff; border: 1px solid #edede7; transition: transform .2s ease, box-shadow .2s ease; }
+.home-page-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(31,41,39,.07); }
+.home-page-number { color: #858c83; font-size: 8px; letter-spacing: .15em; }
+.home-page-card strong { margin-top: 20px; font: 600 21px var(--serif); letter-spacing: -.04em; }
+.home-page-link { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 15px; color: #767d75; font-size: 9px; }
+.home-page-link i { color: var(--red); font-size: 12px; font-style: normal; }
 
 .hero { position: relative; overflow: hidden; isolation: isolate; background: #f0efe9; }
 .hero::before { position: absolute; z-index: -1; top: 8%; right: max(2%, calc((100vw - 1240px) / 2)); width: min(28vw, 360px); height: 84%; background: url("Emax/emax-2020/Steel%205MM.jpg") center 46% / cover no-repeat; content: ""; opacity: .12; filter: saturate(.65); mask-image: linear-gradient(90deg, transparent, #000 27%, #000 76%, transparent); }
@@ -185,6 +211,17 @@ h1, h2, h3, p { margin-top: 0; }
   .primary-nav.is-open { display: flex; }
   .primary-nav > a { padding: 13px 4px; }
   .primary-nav .nav-contact { margin-top: 5px; padding-inline: 14px; }
+  .page-banner { min-height: 300px; }
+  .page-banner-content { padding-block: 49px 56px; }
+  .page-banner h1 { font-size: clamp(39px, 10vw, 55px); }
+  .page-banner::before { width: 55%; opacity: .09; }
+  .page-banner-index { right: 20px; bottom: 17px; font-size: 7px; }
+  .home-pages { padding-block: 65px; }
+  .home-pages-heading { display: block; margin: 17px 0 24px; }
+  .home-pages-heading h2 { font-size: 36px; }
+  .home-pages-heading p { margin-top: 12px; }
+  .home-pages-grid { grid-template-columns: 1fr; gap: 10px; }
+  .home-page-card { min-height: 135px; }
   .hero-grid { grid-template-columns: 1fr; gap: 0; padding-top: 35px; }
   .hero::before { right: -35px; width: 43%; height: 38%; top: 54%; opacity: .09; }
   .hero-copy { padding: 24px 0 34px; }
