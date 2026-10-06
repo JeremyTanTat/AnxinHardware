@@ -68,6 +68,7 @@ a { color: inherit; text-decoration: none; }
 .gallery-project-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 21px; }
 .gallery-year { color: #898f86; font-size: 8px; font-weight: 700; letter-spacing: .17em; }
 .gallery-project-heading h2 { max-width: 780px; margin: 8px 0 0; font: 600 clamp(21px,2.7vw,30px)/1.25 var(--serif); letter-spacing: -.045em; }
+.gallery-original-caption { margin: 7px 0 0; color: #7d847b; font-size: 12px; }
 .gallery-count { flex: 0 0 auto; padding-bottom: 4px; color: #838a81; font-size: 8px; letter-spacing: .14em; }
 .gallery-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 13px; }
 .gallery-photo { min-width: 0; margin: 0; overflow: hidden; background: #fff; }
