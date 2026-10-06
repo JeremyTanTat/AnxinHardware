@@ -214,6 +214,13 @@ h1, h2, h3, p { margin-top: 0; }
 .footer-top { font-size: 9px; }
 .footer-top span { margin-left: 8px; color: #f0a493; }
 .footer-bottom { min-height: 42px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,.15); color: #b9c5bb; font-size: 8px; }
+.development-banner { position: fixed; z-index: 30; right: 20px; bottom: 20px; left: 20px; width: max-content; max-width: min(820px, calc(100% - 40px)); min-height: 72px; margin-inline: auto; padding: 12px 17px; display: flex; align-items: center; gap: 13px; color: #30230d; background: #ffe18a; border: 2px solid #9a6200; box-shadow: 0 8px 30px rgba(31,41,39,.26); }
+.development-icon { flex: 0 0 31px; width: 31px; height: 31px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: #8b4c00; font: 800 20px/1 var(--sans); }
+.development-copy { display: flex; flex-direction: column; gap: 3px; }
+.development-copy strong { font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.development-copy > span { font-size: 10px; line-height: 1.45; }
+.development-banner > a { flex: 0 0 auto; margin-left: 8px; padding: 9px 11px; color: #fff; background: #49320f; font-size: 10px; font-weight: 700; }
+.development-banner > a span { margin-left: 7px; color: #ffe18a; }
 
 @media (max-width: 760px) {
   .container { width: min(100% - 40px, 560px); }
@@ -291,6 +298,11 @@ h1, h2, h3, p { margin-top: 0; }
   .footer-main { min-height: 145px; flex-wrap: wrap; gap: 15px; padding-block: 22px; }
   .footer-main p { order: 3; width: 100%; }
   .footer-bottom { min-height: 48px; gap: 12px; font-size: 7px; }
+  .development-banner { right: 10px; bottom: 10px; left: 10px; width: auto; max-width: none; min-height: 66px; padding: 10px; gap: 9px; }
+  .development-icon { flex-basis: 27px; width: 27px; height: 27px; }
+  .development-copy strong { font-size: 10px; }
+  .development-copy > span { font-size: 9px; }
+  .development-banner > a { margin-left: 0; padding: 8px; font-size: 9px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
