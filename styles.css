@@ -40,6 +40,7 @@ a { color: inherit; text-decoration: none; }
 .page-banner-about::before { background-image: url("Emax/emax-2020/Mini%20Impact%20wrench.jpg"); }
 .page-banner-products::before { background-image: url("Emax/emax-2020/Surface%20tool%202%20(Minimal).jpg"); }
 .page-banner-contact::before { background-image: url("Emax/emax-2020/Rathet%20Wrench%20(Minimal).jpg"); }
+.page-banner-gallery::before { background-image: url("Gallery%20Photos/20180419_160901.jpg"); }
 .page-banner-content { position: relative; z-index: 1; padding-block: 62px; }
 .page-banner .eyebrow { color: #c3d0c7; }
 .page-banner h1 { margin: 21px 0 13px; font: 500 clamp(43px, 5.5vw, 64px)/1.1 var(--serif); letter-spacing: -.06em; }
@@ -52,13 +53,27 @@ a { color: inherit; text-decoration: none; }
 .home-pages-heading h2 { max-width: 580px; margin: 0; font: 500 clamp(32px,4vw,45px)/1.17 var(--serif); letter-spacing: -.06em; }
 .home-pages-heading h2 span { color: #a0a69d; }
 .home-pages-heading p { max-width: 330px; margin: 0 0 3px; color: var(--muted); font-size: 11px; line-height: 1.8; }
-.home-pages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.home-pages-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .home-page-card { min-height: 155px; padding: 20px; display: flex; flex-direction: column; background: #fff; border: 1px solid #edede7; transition: transform .2s ease, box-shadow .2s ease; }
 .home-page-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(31,41,39,.07); }
 .home-page-number { color: #858c83; font-size: 8px; letter-spacing: .15em; }
 .home-page-card strong { margin-top: 20px; font: 600 21px var(--serif); letter-spacing: -.04em; }
 .home-page-link { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 15px; color: #767d75; font-size: 9px; }
 .home-page-link i { color: var(--red); font-size: 12px; font-style: normal; }
+.about-gallery-link { margin: 17px 0 0 14px; }
+.gallery-section { padding-block: 77px 105px; background: #f0efe9; }
+.gallery-intro { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 42px; }
+.gallery-intro p { max-width: 415px; margin: 0; color: var(--muted); font-size: 11px; line-height: 1.8; }
+.gallery-project + .gallery-project { margin-top: 67px; padding-top: 48px; border-top: 1px solid #dcdcd3; }
+.gallery-project-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 21px; }
+.gallery-year { color: #898f86; font-size: 8px; font-weight: 700; letter-spacing: .17em; }
+.gallery-project-heading h2 { max-width: 780px; margin: 8px 0 0; font: 600 clamp(21px,2.7vw,30px)/1.25 var(--serif); letter-spacing: -.045em; }
+.gallery-count { flex: 0 0 auto; padding-bottom: 4px; color: #838a81; font-size: 8px; letter-spacing: .14em; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 13px; }
+.gallery-photo { min-width: 0; margin: 0; overflow: hidden; background: #fff; }
+.gallery-photo img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #e3e1d9; transition: transform .35s ease; }
+.gallery-photo:hover img { transform: scale(1.025); }
+.gallery-photo figcaption { min-height: 39px; display: flex; align-items: center; padding: 9px 11px; color: #737a72; font-size: 8px; line-height: 1.55; }
 
 .hero { position: relative; overflow: hidden; isolation: isolate; background: #f0efe9; }
 .hero::before { position: absolute; z-index: -1; top: 8%; right: max(2%, calc((100vw - 1240px) / 2)); width: min(28vw, 360px); height: 84%; background: url("Emax/emax-2020/Steel%205MM.jpg") center 46% / cover no-repeat; content: ""; opacity: .12; filter: saturate(.65); mask-image: linear-gradient(90deg, transparent, #000 27%, #000 76%, transparent); }
@@ -222,6 +237,16 @@ h1, h2, h3, p { margin-top: 0; }
   .home-pages-heading p { margin-top: 12px; }
   .home-pages-grid { grid-template-columns: 1fr; gap: 10px; }
   .home-page-card { min-height: 135px; }
+  .about-gallery-link { margin: 20px 0 0; }
+  .gallery-section { padding-block: 57px 74px; }
+  .gallery-intro { display: block; margin-bottom: 29px; }
+  .gallery-intro p { margin-top: 12px; }
+  .gallery-project + .gallery-project { margin-top: 45px; padding-top: 34px; }
+  .gallery-project-heading { align-items: start; }
+  .gallery-project-heading h2 { font-size: 22px; }
+  .gallery-count { padding-top: 12px; font-size: 7px; }
+  .gallery-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+  .gallery-photo figcaption { min-height: 45px; padding: 8px; font-size: 7px; }
   .hero-grid { grid-template-columns: 1fr; gap: 0; padding-top: 35px; }
   .hero::before { right: -35px; width: 43%; height: 38%; top: 54%; opacity: .09; }
   .hero-copy { padding: 24px 0 34px; }
