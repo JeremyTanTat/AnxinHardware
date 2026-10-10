@@ -1,3 +1,4 @@
+(() => {
 const menuToggle = document.querySelector(".menu-toggle");
 const primaryNav = document.querySelector("#primary-nav");
 
@@ -17,6 +18,8 @@ primaryNav.addEventListener("click", (event) => {
 });
 
 document.querySelector("#year").textContent = new Date().getFullYear();
+
+if (document.querySelector(".chatbot")) return;
 
 const productKnowledge = window.ANXIN_PRODUCT_KNOWLEDGE;
 
@@ -199,3 +202,4 @@ if (!Array.isArray(productKnowledge)) {
   });
   addWelcome();
 }
+})();
