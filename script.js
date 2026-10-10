@@ -106,21 +106,30 @@ if (!Array.isArray(productKnowledge)) {
     return text.toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
   }
 
+  function canonicalBrand(text) {
+    const normalized = normalize(text);
+    return /\b(?:karcher|kaercher)\b/.test(normalized) ? "kaercher" : normalized;
+  }
+
   function findProducts(query) {
     const normalizedQuery = normalize(query);
     const stopWords = ["the", "and", "for", "what", "how", "can", "does", "use", "price", "pricing", "cost", "tell", "about", "have", "much", "are", "with", "from", "there", "available", "product", "products", "tool", "tools", "range", "list", "show", "all", "brand", "professional", "you", "your", "does", "this", "that"];
-    const brand = ["emax", "kinghawk", "kaercher", "karcher"].find((name) => normalizedQuery.includes(name));
-    const terms = normalizedQuery.split(/\s+/).filter((term) => term.length > 2 && term !== brand && !stopWords.includes(term));
+    const brand = ["emax", "kinghawk"].find((name) => normalizedQuery.includes(name))
+      || (/\b(?:karcher|kaercher)\b/.test(normalizedQuery) ? "kaercher" : null);
+    const terms = normalizedQuery.split(/\s+/).filter((term) => {
+      const isKaercherAlias = brand === "kaercher" && /^(?:karcher|kaercher)$/.test(term);
+      return term.length > 2 && term !== brand && !isKaercherAlias && !stopWords.includes(term);
+    });
 
     if (brand && !terms.length) {
-      const overview = productKnowledge.find((product) => product.overview && normalize(product.brand) === brand);
+      const overview = productKnowledge.find((product) => product.overview && canonicalBrand(product.brand) === brand);
       if (overview) return [overview];
     }
 
     const rankedMatches = productKnowledge.map((product) => {
       const searchable = normalize(`${product.name} ${product.brand} ${product.aliases.join(" ")} ${product.description} ${product.use}`);
       let score = terms.reduce((total, term) => total + (searchable.includes(term) ? (product.name.toLowerCase().includes(term) ? 3 : 1) : 0), 0);
-      if (brand && normalize(product.brand).includes(brand)) score += 5;
+      if (brand && canonicalBrand(product.brand) === brand) score += 5;
       if (normalizedQuery.includes(normalize(product.name))) score += 6;
       return { product, score };
     }).filter((match) => match.score > 0)
@@ -146,7 +155,7 @@ if (!Array.isArray(productKnowledge)) {
     const matches = requestedModels.length ? matchingModelProducts : findProducts(query);
 
     if (requestedModels.length && !matchingModelProducts.length) {
-      const isKaercher = /\b(kaercher|karcher)\b/.test(normalizedQuery);
+      const isKaercher = canonicalBrand(normalizedQuery) === "kaercher";
       appendMessage("assistant", "I couldn't confirm that exact model in the product information available here. Contact our team to confirm current details, availability and price.", isKaercher
         ? { label: "Kärcher Singapore Professional directory", url: "https://www.kaercher.com/sg/professional.html" }
         : { label: "Contact Anxin Hardware", url: "contact.html" });
